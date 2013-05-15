@@ -1,0 +1,23 @@
+{
+  "name": "kally-razor",
+  "version": "0.0.1",
+  "description": "Razor engine for Node",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nufyoot/kally-razor.git"
+  },
+  "keywords": [
+    "razor",
+    "node",
+    "kally-razor",
+    "kally"
+  ],
+  "author": "Terry Tice <nufyoot@gmail.com>",
+}
