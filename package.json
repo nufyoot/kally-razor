@@ -19,5 +19,9 @@
     "kally-razor",
     "kally"
   ],
-  "author": "Terry Tice <nufyoot@gmail.com>",
+  "devDependencies": {
+    "mocha": "",
+    "should": ""
+  },
+  "author": "Terry Tice <nufyoot@gmail.com>"
 }
