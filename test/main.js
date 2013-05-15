@@ -1,5 +1,5 @@
 var chai = require('chai');
-var KallyRazor = require('../lib/main');
+var KallyRazor = require('../lib/main').KallyRazor;
 var fs = require('fs');
 
 var razor = KallyRazor({
