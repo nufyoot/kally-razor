@@ -1,5 +1,6 @@
 var chai = require('chai');
 var KallyRazor = require('../lib/main');
+var fs = require('fs');
 
 var razor = KallyRazor({
     root: __dirname
@@ -26,12 +27,12 @@ describe('KallyRazor', function() {
         describe('from a file', function() {
             it('using the exact file name', function() {
                 var result = razor.render(__dirname + '/input/test-no-razor.html');
-                result.should.equal('it exists');
+                result.should.equal(fs.readFileSync(__dirname + '/output/test-no-razor.html').toString());
             });
 
             it('using relative file names', function() {
                 var result = razor.render('input/test-no-razor.html');
-                result.should.equal('it exists');
+                result.should.equal(fs.readFileSync(__dirname + '/output/test-no-razor.html').toString());
             });
         });
     });
