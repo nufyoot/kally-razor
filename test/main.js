@@ -7,8 +7,12 @@ var should = chai.should();
 
 describe('KallyRazor', function() {
     describe('throws an error', function() {
+        it('when not passing a view', function() { 
+            should.Throw(function() { razor.render(); });
+        });
+
         it('when not passing a string to render', function() {
-            should.Throw(function() { razor.render({ File: 'test' }) });
+            should.Throw(function() { razor.render({ File: 'test' }); });
         });
     });
 
