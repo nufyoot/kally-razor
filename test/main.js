@@ -38,9 +38,14 @@ describe('KallyRazor', function() {
 
         describe('using razor', function() {
             it('wth a basic model', function() {
-                var result = razor.render('input/test-basic-model.html', { Name: 'Testy Tester' });
+                var result = razor.render('input/test-basic-model.html', { name: 'Testy Tester' });
                 result.should.equal(fs.readFileSync(__dirname + '/output/test-basic-model.html').toString());
             });
+
+            it('with multiple references', function() {
+                var result = razor.render('input/test-multiple-references.html', { name: 'Testy Tester', title: 'my title' });
+                result.should.equal(fs.readFileSync(__dirname + '/output/test-multiple-references.html').toString());
+            })
         });
     });
 });
