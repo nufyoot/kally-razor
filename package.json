@@ -20,8 +20,8 @@
     "kally"
   ],
   "devDependencies": {
-    "mocha": "",
-    "should": ""
+    "chai": "*",
+    "mocha": "*"
   },
   "author": "Terry Tice <nufyoot@gmail.com>"
 }
