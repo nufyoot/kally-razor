@@ -23,5 +23,8 @@
     "chai": "*",
     "mocha": "*"
   },
+  "dependencies": {
+    "express": "3.x"
+  },
   "author": "Terry Tice <nufyoot@gmail.com>"
 }

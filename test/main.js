@@ -1,10 +1,15 @@
 var chai = require('chai');
-var kallyRazor = require('../lib/main');
+var KallyRazor = require('../lib/main');
 
-var assert = chai.assert;
+var razor = KallyRazor();
 
-describe('kallyRazor', function() {
-    it("compiles an empty file", function() {
-        assert(true);
+chai.should();
+
+describe('KallyRazor', function() {
+    describe('compiles', function() {
+        it('from a file', function() {
+            var result = razor.render('view', 'blah');
+            result.should.equal('blah');
+        });
     });
 });
