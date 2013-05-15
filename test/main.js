@@ -35,5 +35,12 @@ describe('KallyRazor', function() {
                 result.should.equal(fs.readFileSync(__dirname + '/output/test-no-razor.html').toString());
             });
         });
+
+        describe('using razor', function() {
+            it('wth a basic model', function() {
+                var result = razor.render('input/test-basic-model.html', { Name: 'Testy Tester' });
+                result.should.equal(fs.readFileSync(__dirname + '/output/test-basic-model.html').toString());
+            });
+        });
     });
 });
