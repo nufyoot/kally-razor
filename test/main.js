@@ -71,6 +71,11 @@ describe('KallyRazor', function() {
                 var result = razor.render('input/test-razor-section-scope.html');
                 result.should.equal(fs.readFileSync(__dirname + '/output/test-razor-section-scope.html').toString());
             });
+
+            it('with unicode identifiers', function() {
+                var result = razor.render('input/test-unicode-names.html', { ಠ_ಠ: 'Unicode' });
+                result.should.equal(fs.readFileSync(__dirname + '/output/test-unicode-names.html').toString());
+            });
         });
     });
 
