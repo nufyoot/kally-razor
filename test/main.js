@@ -1,11 +1,13 @@
 var libPath = process.env['KALLY_RAZOR_COV'] ? '../lib-cov/' : '../lib/';
 var chai = require('chai');
 var KallyRazor = require(libPath + 'main');
+var Parser = require(libPath + 'parser');
 var fs = require('fs');
 
 var razor = KallyRazor({
     root: __dirname
 });
+var parser = Parser();
 
 var should = chai.should();
 
@@ -25,6 +27,10 @@ describe('KallyRazor', function() {
 
         it('when a null file name is passed', function() {
             should.Throw(function() { razor.renderFromFile(); });
+        });
+
+        it('when a razor token doesnt start with @', function() {
+            should.Throw(function() { parser.parseRazorToken({ currentChar: function() { return 't'; } }); });
         });
     });
 
@@ -51,6 +57,18 @@ describe('KallyRazor', function() {
                 var result = razor.render('input/test-multiple-references.html', { name: 'Testy Tester', title: 'my title' });
                 result.should.equal(fs.readFileSync(__dirname + '/output/test-multiple-references.html').toString());
             })
+        });
+    });
+
+    describe('parses', function() {
+        it('double @@', function() {
+            var result = parser.parseRazorToken({ 
+                contents: '@@',
+                pos: 0,
+                currentChar: function() { return this.contents[this.pos]; }, 
+                next: function() { return ++this.pos < this.contents.length; } 
+            });
+            result.contents.should.equal('@');
         });
     });
 });
