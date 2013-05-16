@@ -66,6 +66,11 @@ describe('KallyRazor', function() {
                 var result = razor.render('input/test-razor-section.html');
                 result.should.equal(fs.readFileSync(__dirname + '/output/test-razor-section.html').toString());
             });
+
+            it('with a razor section respecting scope', function() {
+                var result = razor.render('input/test-razor-section-scope.html');
+                result.should.equal(fs.readFileSync(__dirname + '/output/test-razor-section-scope.html').toString());
+            });
         });
     });
 
