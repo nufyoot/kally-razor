@@ -23,6 +23,7 @@
     "chai": "*",
     "mocha": "*",
     "coveralls": "*",
+    "jscoverage": "*",
     "mocha-lcov-reporter": "*"
   },
   "dependencies": {
