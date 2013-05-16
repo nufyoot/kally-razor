@@ -1,5 +1,6 @@
+var libPath = process.env['KALLY_RAZOR_COV'] ? '../lib-cov' : '../lib';
 var chai = require('chai');
-var KallyRazor = require('../lib/main');
+var KallyRazor = require(libPath + '/main');
 var fs = require('fs');
 
 var razor = KallyRazor({
