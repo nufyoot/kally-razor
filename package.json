@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test"
+    "test": "make test-coveralls"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
-    "coveralls": "*"
+    "coveralls": "*",
+    "mocha-lcov-reporter": "*"
   },
   "dependencies": {
     "express": "3.x"
