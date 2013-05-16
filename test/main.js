@@ -32,6 +32,10 @@ describe('KallyRazor', function() {
         it('when a razor token doesnt start with @', function() {
             should.Throw(function() { parser.parseRazorToken({ currentChar: function() { return 't'; } }); });
         });
+
+        it('when starting a section without ( or {', function() {
+            should.Throw(function() { parser.parseRazorSection({ currentChar: function() { return 't'; }, pos: 0 }); });
+        });
     });
 
     describe('compiles', function() {
