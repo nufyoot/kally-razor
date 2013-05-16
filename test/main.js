@@ -24,7 +24,7 @@ describe('KallyRazor', function() {
         });
 
         it('when a null file name is passed', function() {
-            should.Throw(function() { razor.render(); });
+            should.Throw(function() { razor.renderFromFile(); });
         });
     });
 
