@@ -22,6 +22,10 @@ describe('KallyRazor', function() {
         it('when a file does not exist', function() {
             should.Throw(function() { razor.render('file-does-not-exist.html'); });
         });
+
+        it('when a null file name is passed', function() {
+            should.Throw(function() { razor.render(); });
+        });
     });
 
     describe('compiles', function() {
