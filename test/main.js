@@ -76,6 +76,21 @@ describe('KallyRazor', function() {
                 var result = razor.render('input/test-unicode-names.html', { ಠ_ಠ: 'Unicode' });
                 result.should.equal(fs.readFileSync(__dirname + '/output/test-unicode-names.html').toString());
             });
+
+            it('with only a razor token', function() {
+                var result = razor.renderFromString('@model.name', { name: 'Only Razor' });
+                result.should.equal('Only Razor');
+            });
+
+            it ('with razor token as last token', function() {
+                var result = razor.renderFromString('Test @model.name', { name: 'Make it up' });
+                result.should.equal('Test Make it up');
+            });
+
+            it ('with razor token as first token', function() {
+                var result = razor.renderFromString('@model.name rules', { name: 'KallyRazor' });
+                result.should.equal('KallyRazor rules');
+            });
         });
     });
 
