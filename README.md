@@ -46,7 +46,7 @@ var contents = razor.parse('./views/index.html', { firstName: 'Test', lastName: 
 The above example pulls in the kally-razor module (assuming you've installed it using npm), then creates a new instance by calling the KallyRazor function passing in some configuration parameters (I'll provide these below).  Finally, we call `razor.parse` and pass it the file name to parse and the model to be passed in.  This will return back to us the contents of the parsed Razor file.  Simple.  Now for the configuration parameters.
 ```
 {
-  root: <directory you want to be the root for all file references.
+  root: <directory you want to be the root for all file references>
 }
 ```
 The root is the directory you want to be used as the root for all views.  We'll first try to do an exact lookup in the event that you've decided to pass in an absolute file path.  Otherwise, we'll prepend this root parameter to all file references.
