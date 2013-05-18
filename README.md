@@ -5,6 +5,12 @@ kally-razor
 
 Moving from C# and MVC in the .NET world, I've grown quite fond of using Razor.  Sure, there are other view engines for Node.js, but none of them quite hit what I needed.
 
+### Installing KallyRazor
+Probably the easiest method is to use npm.
+```
+npm install kally-razor
+```
+
 ### What's available?
 First, there's the basic syntax:
 ```html
@@ -27,3 +33,20 @@ but this is just to show an example of a more complex grouping.  Now, all the ex
 ```
 
 Of course, these are all VERY basic examples.  More complex examples to come later.
+
+Now, I mentioned above that all views have a variable named `model` passed in.  But where does the data come from?  Here's an example of how KallyRazor is called.
+```javascript
+var KallyRazor = require('kally-razor');
+var razor = KallyRazor({
+  root: __dirname
+});
+
+var contents = razor.parse('./views/index.html', { firstName: 'Test', lastName: 'Testerson' });
+```
+The above example pulls in the kally-razor module (assuming you've installed it using npm), then creates a new instance by calling the KallyRazor function passing in some configuration parameters (I'll provide these below).  Finally, we call `razor.parse` and pass it the file name to parse and the model to be passed in.  This will return back to us the contents of the parsed Razor file.  Simple.  Now for the configuration parameters.
+```
+{
+  root: <directory you want to be the root for all file references.
+}
+```
+The root is the directory you want to be used as the root for all views.  We'll first try to do an exact lookup in the event that you've decided to pass in an absolute file path.  Otherwise, we'll prepend this root parameter to all file references.
