@@ -14,7 +14,11 @@ All views are passed a variable named `model` which contains anything you pass t
 ```html
 <div>@(model.firstName + ' ' + model.lastName)</div>
 ```
-Now, both examples above will evaluate the expression and immediatley output the result right into place.  But what if you need to do some calculations in the view and don't want to output anything yet?
+The above line of code could just be written as
+```html
+<div>@model.firstName @model.lasstName</div>
+```
+but this is just to show an example of a more complex grouping.  Now, all the examples above will evaluate the expression and immediatley output the result right into place.  But what if you need to do some calculations in the view and don't want to output anything yet?
 ```html
 @{
   var i = 12;
