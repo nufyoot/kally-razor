@@ -82,14 +82,50 @@ describe('KallyRazor', function() {
                 result.should.equal('Only Razor');
             });
 
-            it ('with razor token as last token', function() {
+            it('with razor token as last token', function() {
                 var result = razor.renderFromString('Test @model.name', { name: 'Make it up' });
                 result.should.equal('Test Make it up');
             });
 
-            it ('with razor token as first token', function() {
+            it('with razor token as first token', function() {
                 var result = razor.renderFromString('@model.name rules', { name: 'KallyRazor' });
                 result.should.equal('KallyRazor rules');
+            });
+
+            describe('with only a razor section', function() {
+                it('using ()', function() {
+                    var result = razor.renderFromString('@(model.name + " yep")', { name: 'KallyRazor' });
+                    result.should.equal('KallyRazor yep');
+                });
+
+                it('using {}', function() {
+                    var result = razor.renderFromString('@{model.name = model.name + " yep";}', { name: 'KallyRazor' });
+                    result.should.equal('');
+                });
+            });
+
+            describe('with razor section as last token', function() {
+                it('using ()', function() {
+                    var result = razor.renderFromString('Testing @(model.name + " yep")', { name: 'KallyRazor' });
+                    result.should.equal('Testing KallyRazor yep');
+                });
+
+                it('using {}', function() {
+                    var result = razor.renderFromString('Testing @{model.name = model.name + " yep";}', { name: 'KallyRazor' });
+                    result.should.equal('Testing ');
+                });
+            });
+
+            describe('with razor section as first token', function() {
+                it('using ()', function() {
+                    var result = razor.renderFromString('@(model.name + " yep") Testing', { name: 'KallyRazor' });
+                    result.should.equal('KallyRazor yep Testing');
+                });
+
+                it('using {}', function() {
+                    var result = razor.renderFromString('@{model.name = model.name + " yep";} Testing', { name: 'KallyRazor' });
+                    result.should.equal(' Testing');
+                });
             });
         });
     });
