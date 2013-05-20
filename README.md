@@ -50,3 +50,47 @@ The above example pulls in the kally-razor module (assuming you've installed it 
 }
 ```
 The root is the directory you want to be used as the root for all views.  We'll first try to do an exact lookup in the event that you've decided to pass in an absolute file path.  Otherwise, we'll prepend this root parameter to all file references.
+
+### Layouts
+One of the cooles things about Razor is the ability to easily to layouts (templates).  Here's a sample call from Node.js
+```javascript
+var KallyRazor = require('kally-razor');
+var razor = KallyRazor({
+  root: __dirname + '/views/',
+  layout: 'shared/_layout.html'
+})
+```
+The above code says that the root of the razor engine should be the views sub folder of the currently executing js file.  Next we specify the default layout (template) to be used.  Let's say we have a very basic layout file so that "shared/_layout.html" looks like
+```html
+@{ layout = null; }
+<html>
+  <head>
+    <title>Sample</title>
+  </head>
+  <body>
+    <h1>Some Header</h1>
+    @renderBody()
+  </body>
+</html>
+```
+The only strange part might be `@renderBody()` which just tells Razor where to place the body content.  Then, having the following line in Node.js
+```javascript
+razor.render('home/index.html');
+```
+And a file "home/index.html" that looks like
+```html
+<div>Yeah, it worked!</div>
+```
+this would all yield:
+```html
+<html>
+  <head>
+    <title>Samples</title>
+  </head>
+  <body>
+    <h1>Some Header</h1>
+    <div>Yeah, it worked!</div>
+  </body>
+</html>
+```
+That's awesome :)
