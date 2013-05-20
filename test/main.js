@@ -10,6 +10,10 @@ var razor = KallyRazor({
 var parser = Parser();
 
 var should = chai.should();
+var assert = chai.assert;
+var expect = chai.expect;
+
+chai.Assertion.includeStack = true;
 
 describe('KallyRazor', function() {
     describe('throws an error', function() {
@@ -35,6 +39,23 @@ describe('KallyRazor', function() {
 
         it('when starting a section without ( or {', function() {
             should.Throw(function() { parser.parseRazorSection({ currentChar: function() { return 't'; }, pos: 0 }); });
+        });
+
+        it('when render body is called without being opened', function() {
+            should.Throw(function() { parser.parseRazorToken(parser.createIterator('@renderBody')); }, 'Expected "(" after "renderBody".');
+        });
+        
+        it('when render body is called without being closed', function() {
+            should.Throw(function() { parser.parseRazorToken(parser.createIterator('@renderBody(')); }, 'Expected ")" after "renderBody".');
+        });
+
+        it('when a large depth is reached', function() {
+            var razor = KallyRazor({
+                root: __dirname,
+                layout: 'input/test-basic-layout.html'
+            })
+            should.Throw(function() { razor.renderFromString('Test', null, null); }, 
+                'More than 50 layers of layouts.  Make sure the parent layout has "@{ layout = null; }" at the beginning of the file.');
         });
     });
 
