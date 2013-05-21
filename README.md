@@ -11,6 +11,17 @@ Probably the easiest method is to use npm.
 npm install kally-razor
 ```
 
+### Testing KallyRazor
+OSX
+```
+make test
+```
+
+Windows
+```
+./test.bat
+```
+
 ### What's available?
 First, there's the basic syntax:
 ```html
