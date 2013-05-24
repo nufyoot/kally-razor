@@ -15,6 +15,15 @@ describe('Templating', function() {
             });
             var result = razor.render('input/test-basic-layout.html');
             result.should.equal(fs.readFileSync(__dirname + '/output/test-basic-layout.html').toString());
-        })
+        });
+
+        it('with layout sections', function() {
+            var razor = KallyRazor({
+                root: __dirname,
+                layout: "input/_test-layout-sections.html"
+            });
+            var result = razor.render('input/test-layout-sections.html');
+            result.should.equal(fs.readFileSync(__dirname + '/output/test-layout-sections.html').toString());
+        });
     });
 });

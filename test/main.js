@@ -4,10 +4,10 @@ var KallyRazor = require(libPath + 'main');
 var Parser = require(libPath + 'parser');
 var fs = require('fs');
 
-var razor = KallyRazor({
+var razor = new KallyRazor({
     root: __dirname
 });
-var parser = Parser();
+var parser = new Parser();
 
 var should = chai.should();
 var assert = chai.assert;
