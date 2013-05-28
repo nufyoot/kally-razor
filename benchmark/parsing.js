@@ -12,4 +12,4 @@ contents = "This is a very small test @model.name";
 for (i = 0; i < 1000000; i++) {
     parser.parseRazorContents(contents);
 }
-console.log('Parsing razor contents ' + i + ' times in ' + (Date.now() - start) + ' ms');
+console.log('Parsing razor contents 1,000,000 times in ' + (Date.now() - start) + ' ms');
