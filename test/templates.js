@@ -25,5 +25,7 @@ describe('Templating', function() {
             var result = razor.render('input/test-layout-sections.html');
             result.should.equal(fs.readFileSync(__dirname + '/output/test-layout-sections.html').toString());
         });
+
+        it
     });
 });
