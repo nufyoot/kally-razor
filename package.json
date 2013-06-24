@@ -1,6 +1,6 @@
 {
   "name": "kally-razor",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "Razor engine for Node",
   "main": "lib/main.js",
   "directories": {
